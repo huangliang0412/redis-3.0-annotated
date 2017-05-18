@@ -272,6 +272,7 @@ zskiplistNode *zslInsert(zskiplist *zsl, double score, robj *obj) {
     for (i = 0; i < level; i++) {
         
         // 设置新节点的 forward 指针
+        //设置新节点指向下一个指针
         x->level[i].forward = update[i]->level[i].forward;
         
         // 将沿途记录的各个节点的 forward 指针指向新节点
@@ -279,7 +280,7 @@ zskiplistNode *zslInsert(zskiplist *zsl, double score, robj *obj) {
 
         /* update span covered by update[i] as x is inserted here */
         // 计算新节点跨越的节点数量
-        x->level[i].span = update[i]->level[i].span - (rank[0] - rank[i]);
+        x->level[i].span = update[i]->level[i].span - (rank[0] - rank[i]);     //???????不是很明白
 
         // 更新新节点插入之后，沿途节点的 span 值
         // 其中的 +1 计算的是新节点

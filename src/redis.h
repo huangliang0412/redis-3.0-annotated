@@ -401,7 +401,7 @@ typedef long long mstime_t; /* millisecond time type. */
 typedef struct redisObject {
 
     // 类型
-    unsigned type:4;
+    unsigned type:4;     //只占四位
 
     // 编码
     unsigned encoding:4;
@@ -1023,7 +1023,7 @@ struct redisServer {
     int tcpkeepalive;               /* Set SO_KEEPALIVE if non-zero. */
     int active_expire_enabled;      /* Can be disabled for testing purposes. */
     size_t client_max_querybuf_len; /* Limit for client query buffer length */
-    int dbnum;                      /* Total number of configured DBs */
+    int dbnum;           //服务器数据库数量           /* Total number of configured DBs */
     int daemonize;                  /* True if running as a daemon */
     // 客户端输出缓冲区大小限制
     // 数组的元素有 REDIS_CLIENT_LIMIT_NUM_CLASSES 个
